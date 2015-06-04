@@ -1,4 +1,8 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    tools:context=".MainActivity" tools:ignore="MergeRootFrame" />
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_main"
+    android:name="cristiano.com.tvseriestoday.TvSeriesFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cristiano.com.tvseriestoday.TvSeriesFragment"
+    tools:layout="@android:layout/list_content" />

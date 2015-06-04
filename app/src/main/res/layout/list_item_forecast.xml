@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="?android:attr/listPreferredItemHeightLarge"
+    android:orientation="vertical"
+    android:background="@drawable/touch_selector">
+    <TextView
+        android:id="@+id/list_item_date_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:fontFamily="sans-serif-condensed"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:background="@color/tst_greenb"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1"
+       >
+
+        <TextView
+            android:id="@+id/list_item_showname_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="25sp"
+            android:text="Bones"
+            android:paddingStart="5dp" />
+
+        <TextView
+            android:id="@+id/list_item_episode_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:text="1x18"
+            android:paddingStart="30dp"
+            android:password="false"
+            android:layout_weight="0.29" />
+    </LinearLayout>
+
+
+</LinearLayout>

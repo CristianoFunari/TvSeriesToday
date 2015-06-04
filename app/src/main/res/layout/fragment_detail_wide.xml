@@ -1,0 +1,61 @@
+<!-- Wide layout. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_gravity="left"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <TextView
+            android:fontFamily="sans-serif-condensed"
+            android:id="@+id/detail_showname_textview"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:textAppearanceLarge" />
+        <TextView
+            android:fontFamily="sans-serif-condensed"
+            android:id="@+id/detail_title_textview"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/grey_700"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textStyle="italic"/>
+
+        <TextView
+            android:id="@+id/detail_episode_textview"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/grey_700"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/poster_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+
+            <TextView
+                android:id="@+id/detail_plot_textview"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                 />
+            <TextView
+                android:id="@+id/detail_actors_textview"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textAppearance="?android:textAppearanceSmall" />
+
+        </LinearLayout>
+</ScrollView>

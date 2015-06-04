@@ -2,28 +2,4 @@
     <string name="app_name">TvSeriesToday</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-<<<<<<< HEAD
-=======
-
-    <string name="content_authority">cristiano.com.tvseriestoday</string>
-    <string name="sync_account_type">tvseriestoday.cristiano</string>
-    <string name="title_activity_detail">Episode Detail</string>
-    <string name="title_activity_settings">Settings</string>
-    <string name="action_share">Share</string>
-    <string name="action_calendar">Add to calendar</string>
-
-
-    <string name="pref_nDays_label">Number of days</string>
-    <string name="pref_nDays_key">nDays</string>
-    <string name="pref_nDays_default">4</string>
-
-    <string name="pref_enable_fullplot_key" translatable="false">enable_fullplot</string>
-    <string name="pref_enable_fullplot_label">Enable Full Plot</string>
-
-    <string name="pref_enable_fullplot_true">Enabled</string>
-    <string name="pref_enable_fullplot_false">Not Enabled</string>
-    <string name="pref_enable_fullplot_default" translatable="false">true</string>
-
-
->>>>>>> origin/Version-1.0
 </resources>

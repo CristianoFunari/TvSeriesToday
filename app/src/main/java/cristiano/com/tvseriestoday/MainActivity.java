@@ -1,9 +1,14 @@
 package cristiano.com.tvseriestoday;
 
+import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -16,10 +21,10 @@ public class MainActivity extends ActionBarActivity implements TvSeriesFragment.
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
     private static final String DETAILFRAGMENT_TAG = "DFTAG";
-
+    private ProgressDialog pd;
     private boolean mTwoPane;
 
-
+    private ProgressDialog progressDialog ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +53,14 @@ public class MainActivity extends ActionBarActivity implements TvSeriesFragment.
 
 
         TvSeriesSyncAdapter.initializeSyncAdapter(this);
-    }
 
+
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(syncFinishedReceiver);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -86,8 +97,29 @@ public class MainActivity extends ActionBarActivity implements TvSeriesFragment.
     @Override
     protected void onResume() {
         super.onResume();
-            TvSeriesFragment tf = (TvSeriesFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_main);
-                tf.sync();
+        pd = new ProgressDialog(MainActivity.this);
+        pd.setIndeterminate(true);
+        pd.setTitle(R.string.progressbar_title);
+        pd.setCancelable(true);
+        pd.setMessage("Refreshing data");
+        pd.show();
+        TvSeriesFragment tf = (TvSeriesFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_main);
+        tf.sync();
+        registerReceiver(syncFinishedReceiver, new IntentFilter("SYNC_FINISHED"));
+
+    }
+    private BroadcastReceiver syncFinishedReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            pd.dismiss();
+            Log.d(MainActivity.DETAILFRAGMENT_TAG, "Sync finished, should refresh nao!!");
+        }
+    };
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
     }
 
     @Override

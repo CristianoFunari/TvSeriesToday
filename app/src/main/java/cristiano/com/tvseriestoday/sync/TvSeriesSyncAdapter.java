@@ -7,6 +7,7 @@ import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SyncRequest;
 import android.content.SyncResult;
@@ -46,8 +47,10 @@ public class TvSeriesSyncAdapter  extends AbstractThreadedSyncAdapter {
     public TvSeriesSyncAdapter(Context context, boolean autoInitialize) {
         super(context, autoInitialize);
     }
+
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
+
        Log.v(LOG_TAG,"onPerformSync start");
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
@@ -156,6 +159,9 @@ public class TvSeriesSyncAdapter  extends AbstractThreadedSyncAdapter {
         } catch (Exception e) {
             Log.e(LOG_TAG,"Errore nel ritrovamento dei dati");
         }
+        Intent i = new Intent("SYNC_FINISHED");
+        getContext().sendBroadcast(i);
+
     }
 
     private void getTvSeriesDetailDataFromDTO(TvSeriesDTO dto){
@@ -317,11 +323,13 @@ public class TvSeriesSyncAdapter  extends AbstractThreadedSyncAdapter {
      * @param context The context used to access the account service
      */
     public static void syncImmediately(Context context) {
+
         Bundle bundle = new Bundle();
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
         ContentResolver.requestSync(getSyncAccount(context),
                 context.getString(R.string.content_authority), bundle);
+
     }
 
     /**
@@ -383,4 +391,6 @@ public class TvSeriesSyncAdapter  extends AbstractThreadedSyncAdapter {
     public static void initializeSyncAdapter(Context context) {
         getSyncAccount(context);
     }
+
+
 }

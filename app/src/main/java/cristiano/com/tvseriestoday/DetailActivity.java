@@ -38,9 +38,14 @@ public class DetailActivity extends ActionBarActivity {
             DetailFragment fragment = new DetailFragment();
             fragment.setArguments(arguments);
 
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.tvSeries_detail_container, fragment)
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.tvSeries_detail_container,fragment, DetailFragment.TAG)
                     .commit();
+
+
+
+
         }
     }
 

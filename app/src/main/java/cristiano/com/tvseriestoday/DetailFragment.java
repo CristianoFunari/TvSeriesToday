@@ -47,7 +47,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
 
     private static final String LOG_TAG = DetailFragment.class.getSimpleName();
     static final String DETAIL_URI = "URI";
-
+    public static String TAG = "DetailFragment";
     private static final String TVSERIES_SHARE_HASHTAG = " #NextTvSeries";
 
     private ShareActionProvider mShareActionProvider;
@@ -199,15 +199,17 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
 
 
     public void shareOnCalendar() throws ParseException {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(mDate));
-        Intent intent = new Intent(Intent.ACTION_EDIT);
-        intent.setType("vnd.android.cursor.item/event");
-        intent.putExtra("beginTime", cal.getTimeInMillis());
-        intent.putExtra("allDay", false);
-        intent.putExtra("endTime", cal.getTimeInMillis() + 60 * 60 * 1000);
-        intent.putExtra("title", mTitleCalendar);
-        startActivity(intent);
+        if(mDate!=null) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(mDate));
+            Intent intent = new Intent(Intent.ACTION_EDIT);
+            intent.setType("vnd.android.cursor.item/event");
+            intent.putExtra("beginTime", cal.getTimeInMillis());
+            intent.putExtra("allDay", false);
+            intent.putExtra("endTime", cal.getTimeInMillis() + 60 * 60 * 1000);
+            intent.putExtra("title", mTitleCalendar);
+            startActivity(intent);
+        }
     }
 
 }

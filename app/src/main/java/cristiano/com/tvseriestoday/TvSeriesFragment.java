@@ -83,6 +83,7 @@ public class TvSeriesFragment extends Fragment implements LoaderManager.LoaderCa
         if (mPosition != ListView.INVALID_POSITION) {
             mListView.smoothScrollToPosition(mPosition);
         }
+
     }
 
     @Override
